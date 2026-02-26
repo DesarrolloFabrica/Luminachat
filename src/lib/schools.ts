@@ -51,7 +51,7 @@ const VIDEOS = {
   // --- VIDEOS DE INTRODUCCIÓN (Presentación de la Facultad) ---
   INTRO_ADMIN: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602569/SINU_fnuohp.mp4",
   INTRO_LAW: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602798/Gemini_qyluup.mp4",
-  INTRO_ART: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602638/Notebook_ffzjz5.mp4",
+  INTRO_ART: "https://res.cloudinary.com/deziju7gu/video/upload/v1772123472/diseno-y-comunicacion_OJidoeOY_n1gv1p.mp4",
   INTRO_TECH: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602606/CDigital_mabdme.mp4",
   INTRO_BUSINESS: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602595/Camiticket_cwt11r.mp4",
 

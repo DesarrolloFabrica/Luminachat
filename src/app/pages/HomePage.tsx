@@ -22,7 +22,7 @@ const HOME_CONTENT = {
     description: "Tu asistente inteligente para Administrativos, Docentes y Estudiantes. Resuelve dudas al instante.",
     buttonPrimary: "¿Iniciamos?",
 
-    videoUrl: 'https://res.cloudinary.com/dk79pc0vp/video/upload/v1771525248/0219_ar2mvl.mp4', // URL del video de fondo
+    videoUrl: 'https://res.cloudinary.com/deziju7gu/video/upload/v1771620210/naranja_TnrkPbSH_p8f5yc.mp4', // URL del video de fondo
   },
 
   // Pop-up de Selección de Facultad
