@@ -78,19 +78,24 @@ export function Layout() {
            <span className="font-bold text-gray-800 tracking-wider">CAMPUS VIRTUAL</span>
         </header>
 
-        {/* Desktop Toggle Button (Floating) - Optional if user wants to close on desktop too */}
-        <button 
-             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-             className={clsx(
-               "fixed top-6 left-6 z-50 p-3 bg-white border border-gray-200 rounded-full text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all hidden lg:flex items-center justify-center group",
-               isSidebarOpen ? "translate-x-64 shadow-none bg-transparent" : "translate-x-0 shadow-lg border-gray-100"
-             )}
-             title={isSidebarOpen ? "Cerrar Menú" : "Abrir Menú"}
-             style={{ transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)" }}
-        >
-             {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-
+          <button 
+            onClick={() => setIsSidebarOpen(true)}
+            className="
+              fixed top-6 left-10 z-50
+              p-3
+              bg-white border border-gray-200
+              rounded-full
+              text-gray-600
+              hover:text-blue-600 hover:bg-blue-50
+              transition-all
+              hidden lg:flex
+              items-center justify-center
+              shadow-lg
+            "
+            title="Abrir Menú"
+          >
+            <Menu size={20} />
+          </button>
         <div className="flex-1 p-4 md:p-8 lg:p-10 max-w-[1920px] mx-auto w-full">
            <Outlet />
         </div>

@@ -30,7 +30,7 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
           />
         )}
       </AnimatePresence>
-
+      
       <motion.nav 
         initial={false}
         animate={{ x: isOpen ? 0 : -320, opacity: isOpen ? 1 : 0 }}
@@ -50,9 +50,9 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
            {/* Close Button (Visible on Mobile) */}
            <button 
              onClick={onClose}
-             className="p-2 rounded-full bg-gray-100 border border-gray-200 hover:bg-gray-200 text-gray-600 transition-all shadow-sm lg:hidden"
+             className="p-2 rounded-full hover:bg-gray-200 text-gray-600 transition-all lg:visibility"
            >
-             <X size={20} />
+             <X size={25} />
            </button>
         </div>
 
