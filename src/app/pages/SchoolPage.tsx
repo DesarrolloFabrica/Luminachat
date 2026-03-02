@@ -112,6 +112,23 @@ export function SchoolPage() {
         {expandedMedia && renderMediaModal()}
       </AnimatePresence>
 
+      {/* ── MOBILE ONLY: video de fondo para chat view — fuera del AnimatePresence para cubrir todo ── */}
+      {showChat && (
+        <div className="lg:hidden fixed inset-0 z-[19] pointer-events-none">
+          <video
+            key={school.avatarVideoUrl}
+            src={school.avatarVideoUrl}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+          {/* Overlay ligero — sube el alpha para más oscuridad, bájalo para más video */}
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.30)' }} />
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         {!showChat ? (
           /* ==================== INTRO / WELCOME VIEW ==================== */
@@ -308,7 +325,7 @@ export function SchoolPage() {
                 ============================================================ */}
             <div className="hidden lg:flex col-span-12 lg:col-span-6 relative h-full flex-col justify-center py-4 pr-4">
               <motion.div
-                className="relative w-full h-[420px] rounded-[2rem] overflow-hidden border border-gray-200 shadow-2xl bg-black cursor-pointer"
+                className="relative w-full h-[420px] rounded-[2rem] overflow-hidden border border-gray-200 shadow-2xl bg-white cursor-pointer"
                 onClick={() => {
                   if (!isVideoPlaying) {
                     introVideoRef.current?.play();
@@ -329,7 +346,7 @@ export function SchoolPage() {
 
                 {/* Overlay oscuro solo cuando NO está reproduciendo */}
                 {!isVideoPlaying && (
-                  <div className="absolute inset-0 bg-black/40 z-10" />
+                  <div className="absolute inset-0 bg-black/20 z-10" />
                 )}
 
                 {/* Play overlay — se oculta cuando el video está corriendo */}
@@ -380,57 +397,63 @@ export function SchoolPage() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col lg:flex-row h-full w-full gap-4 lg:gap-6 p-4 relative z-20 overflow-hidden"
+            className="flex flex-col lg:flex-row h-full w-full gap-4 lg:gap-6 lg:p-4 relative z-20"
           >
-            {/* Chat Interface - 70% desktop LEFT, full width mobile */}
-            <div className="w-full lg:w-[70%] flex-shrink-0 h-[60vh] lg:h-full bg-white/80 rounded-2xl lg:rounded-[2rem] border border-gray-200 overflow-hidden backdrop-blur-xl shadow-2xl flex flex-col">
-               <ChatInterface 
-                 accentColor={school.accentColor}
-                 schoolName={school.shortName}
-                 onBotResponse={() => {
-                   setIsResponding(true);
-                   setTimeout(() => setIsResponding(false), 4000);
-                 }}
-                 onBotTyping={setIsTyping}
-                 onBack={() => setShowChat(false)}
-                 onAudioTrigger={setAudioTrigger}
-               />
+            {/* Chat Interface - full width mobile, 70% desktop LEFT */}
+            <div className="relative z-10 w-full lg:w-[70%] flex-shrink-0 h-full lg:h-full flex flex-col
+              rounded-3xl lg:rounded-[2rem]
+              border border-white/20 lg:border-gray-200
+              shadow-2xl lg:shadow-2xl
+              overflow-hidden
+              bg-white/10 backdrop-blur-sm
+              lg:bg-white/80 lg:backdrop-blur-xl">
+              <ChatInterface
+                accentColor={school.accentColor}
+                schoolName={school.shortName}
+                onBotResponse={() => {
+                  setIsResponding(true);
+                  setTimeout(() => setIsResponding(false), 4000);
+                }}
+                onBotTyping={setIsTyping}
+                onBack={() => setShowChat(false)}
+                onAudioTrigger={setAudioTrigger}
+              />
             </div>
 
-            {/* Avatar Section - 30% desktop RIGHT, below chat on mobile */}
-            <div className="w-full lg:w-[30%] flex-shrink-0 flex flex-col gap-4 h-auto lg:h-full">
-               {/* Avatar Container - takes remaining space */}
-               <div 
-                 className="relative rounded-2xl lg:rounded-[2rem] overflow-hidden transition-all duration-500 w-full h-[35vh] lg:h-auto lg:flex-1 border border-gray-200 shadow-xl bg-white group cursor-pointer"
+            {/* Avatar Section — SOLO DESKTOP (lg+) */}
+            <div className="hidden lg:flex lg:w-[30%] flex-shrink-0 flex-col gap-4 h-full">
+               {/* Avatar Container — [&_.motion-div-inner]:w-full fuerza el video a llenar todo */}
+               <div
+                 className="relative rounded-[2rem] overflow-hidden w-full flex-1 border border-gray-200 shadow-xl bg-white group cursor-pointer [&_video]:!object-cover"
                  onClick={() => setExpandedMedia('avatar')}
                >
                   {/* Expand Icon Hint */}
-                  <div className="absolute top-2 right-2 lg:top-4 lg:right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="p-1.5 lg:p-2 bg-black/20 hover:bg-black/40 rounded-full text-white transition-colors backdrop-blur-sm">
-                      <Maximize2 size={14} className="lg:w-4 lg:h-4" />
+                  <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="p-2 bg-black/20 hover:bg-black/40 rounded-full text-white transition-colors backdrop-blur-sm">
+                      <Maximize2 size={16} />
                     </div>
                   </div>
 
-                  <ReactiveAvatar 
+                  <ReactiveAvatar
                      isTyping={isTyping}
                      isResponding={isResponding}
                      accentColor={school.accentColor}
                      videoUrl={school.avatarVideoUrl}
-                     className="bg-gray-50"
+                     className="w-full h-full object-cover"
                      playAudio={audioTrigger}
                    />
-                   
+
                    {/* Avatar Status Overlay */}
-                   <div className="absolute bottom-3 lg:bottom-6 left-0 right-0 flex justify-center pointer-events-none z-20">
-                      <div className="px-2 py-1 lg:px-4 lg:py-2 bg-white/80 backdrop-blur-md rounded-full border border-gray-200 text-[8px] lg:text-[10px] font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1 lg:gap-2 shadow-lg">
-                        <span className={clsx("w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full transition-colors duration-300", isResponding ? "bg-green-500 animate-pulse shadow-sm" : "bg-gray-300")} />
+                   <div className="absolute bottom-6 left-0 right-0 flex justify-center pointer-events-none z-20">
+                      <div className="px-4 py-2 bg-white/80 backdrop-blur-md rounded-full border border-gray-200 text-[10px] font-bold text-gray-800 uppercase tracking-wider flex items-center gap-2 shadow-lg">
+                       <span className={clsx("w-2 h-2 rounded-full transition-colors duration-300", isResponding ? "bg-green-500 animate-pulse shadow-sm" : "bg-gray-300")} />
                         {isResponding ? "Hablando..." : (isTyping ? "Procesando..." : "Escuchando")}
                       </div>
                    </div>
                </div>
 
-               {/* Info Card below avatar - Only on Desktop, fixed height */}
-               <div className="hidden lg:flex flex-shrink-0 h-[100px] bg-white border border-gray-200 rounded-[1.5rem] p-4 flex-col justify-center items-center text-center shadow-lg">
+               {/* Info Card */}
+               <div className="flex-shrink-0 h-[100px] bg-white border border-gray-200 rounded-[1.5rem] p-4 flex flex-col justify-center items-center text-center shadow-lg">
                    <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-widest mb-2">Estado del Sistema</p>
                    <div className="flex items-center gap-2 mb-2">
                      <div className={clsx("w-2.5 h-2.5 rounded-full", (isTyping || isResponding) ? "bg-green-500 animate-pulse shadow-sm" : "bg-blue-500")} />

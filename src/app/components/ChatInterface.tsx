@@ -87,14 +87,17 @@ export function ChatInterface({ accentColor, schoolName, onBotResponse, onBotTyp
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [selectedSection, setSelectedSection] = useState<SectionKey | null>(null);
+  const hasInitialized = useRef(false);
 
   // Load API Key on mount
   useEffect(() => {
     setApiKey(getStoredApiKey());
   }, []);
 
-  // Initialize with Level 1 on mount
+  // Initialize with Level 1 on mount — guard evita doble ejecución en React StrictMode
   useEffect(() => {
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
     if (onAudioTrigger) {
       onAudioTrigger('welcome');
     }
@@ -270,7 +273,6 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
               >
                 <Bot size={20} />
               </div>
-              <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full shadow-sm" />
             </div>
             <div>
               <h3 className="font-bold text-gray-900 text-sm tracking-wide">Asistente Virtual</h3>

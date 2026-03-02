@@ -49,11 +49,11 @@ export interface School {
 
 const VIDEOS = {
   // --- VIDEOS DE INTRODUCCIÓN (Presentación de la Facultad) ---
-  INTRO_ADMIN: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602569/SINU_fnuohp.mp4",
-  INTRO_LAW: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602798/Gemini_qyluup.mp4",
-  INTRO_ART: "https://res.cloudinary.com/deziju7gu/video/upload/v1772123472/diseno-y-comunicacion_OJidoeOY_n1gv1p.mp4",
-  INTRO_TECH: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602606/CDigital_mabdme.mp4",
-  INTRO_BUSINESS: "https://res.cloudinary.com/dk79pc0vp/video/upload/v1771602595/Camiticket_cwt11r.mp4",
+  INTRO_ADMIN: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772211970/Salud_y_bienestar_zlkwkt.mp4",
+  INTRO_LAW: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772212143/Ciencias_sociales_jur%C3%ADdicas_y_gobierno_ahyije.mp4",
+  INTRO_ART: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772212088/Dise%C3%B1o_y_Comunicaci%C3%B3n_knognf.mp4",
+  INTRO_TECH: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772212041/Ingenieria_e1xjfw.mp4",
+  INTRO_BUSINESS: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772211849/Transformaci%C3%B3n_empresarial_rsfjeu.mp4",
 
   // --- VIDEOS DE AVATAR (Asistente Virtual - Loop) ---
   // Cada escuela tiene su propio video de fondo para el avatar
