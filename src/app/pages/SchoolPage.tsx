@@ -99,7 +99,7 @@ export function SchoolPage() {
   };
 
   return (
-    <div className="relative w-full min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)] lg:overflow-hidden overflow-y-auto">
+<div className="relative w-full min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)] overflow-y-auto">
       
       {/* Background Ambience based on school color */}
       <div 
@@ -141,12 +141,12 @@ export function SchoolPage() {
             className="grid grid-cols-12 gap-6 lg:h-full w-full relative z-10 pb-8 lg:pb-0"
           >
             {/* Left Column (50%) - Content */}
-            <div className="col-span-12 lg:col-span-6 flex flex-col lg:justify-center pr-4 lg:pr-8 py-6 pl-4 lg:pl-0 lg:overflow-y-auto">
+            <div className="col-span-12 lg:col-span-6 flex flex-col lg:justify-start pt-12 pr-4 lg:pr-8 py-6 pl-4 lg:pl-0 lg:overflow-y-auto">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col lg:h-full lg:justify-center"
+                className="flex flex-col min-h-fit gap-4"
               >
                 <div 
                   className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-gray-200 bg-white/100 backdrop-blur-sm text-sm font-medium w-fit shadow-sm"
@@ -160,7 +160,7 @@ export function SchoolPage() {
                   <span className="tracking-wide uppercase text-xs font-bold">{school.name}</span>
                 </div>
 
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-[1.1] tracking-tight">
+                <h1 className="  text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-gray-900 mb-6 leading-tight tracking-tight max-w-2xl break-words">
                   {school.welcomeMessage}
                 </h1>
 
@@ -325,7 +325,7 @@ export function SchoolPage() {
                 ============================================================ */}
             <div className="hidden lg:flex col-span-12 lg:col-span-6 relative h-full flex-col justify-center py-4 pr-4">
               <motion.div
-                className="relative w-full h-[420px] rounded-[2rem] overflow-hidden border border-gray-200 shadow-2xl bg-white cursor-pointer"
+                className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-gray-200 shadow-2xl bg-white cursor-pointer"
                 onClick={() => {
                   if (!isVideoPlaying) {
                     introVideoRef.current?.play();
@@ -341,7 +341,7 @@ export function SchoolPage() {
                   playsInline
                   poster={school.videoPlaceholder}
                   onEnded={() => setIsVideoPlaying(false)}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
 
                 {/* Overlay oscuro solo cuando NO está reproduciendo */}
