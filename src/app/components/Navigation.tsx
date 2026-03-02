@@ -39,7 +39,7 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
       >
         <div className="flex items-center justify-between px-6 mb-8">
            {/* Logo Editable */}
-           <div className="w-32">
+           <div className="w-20 mx-10">
              <img 
                src={LOGO_URL} 
                alt={LOGO_ALT} 

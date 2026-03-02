@@ -28,6 +28,7 @@ function App() {
             ref={videoRef}
             src="https://h6ajra25jkx2cstu.public.blob.vercel-storage.com/AUDIO18.mp4"
             autoPlay
+            muted
             playsInline
             onEnded={() => setShowIntro(false)}
             className="w-screen h-screen object-cover"
