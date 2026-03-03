@@ -68,7 +68,7 @@ export function Navigation({ isOpen, onClose }: NavigationProps) {
             {({ isActive }) => (
               <>
                 <Home size={24} />
-                <span className="font-medium text-sm uppercase tracking-wide">Inicio</span>
+                <span className="font-medium text-sm normal-case tracking-wide">Inicio</span>
                 
                 {/* Active Indicator Background */}
                 {isActive && (

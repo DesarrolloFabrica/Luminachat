@@ -87,7 +87,7 @@ export const schools: School[] = [
     avatarVideoUrl: VIDEOS.AVATAR_ADMIN, // Video del Avatar
     highlightsTitle: "Salud y bienestar",
     highlights: [
-      "Diplomado en Psicología del Comportamiento y Psiconeuroinmunología: Enfoque a la Salud y Bienestar..",
+      "Diplomado en Psicología del Comportamiento y Psiconeuroinmunología: Enfoque a la Salud y Bienestar.",
       "Diplomado en Atención al Adulto Mayor y Bienestar Mental.",
       "Diplomado en Ayudas Diagnósticas para Salud Visual."
     ],

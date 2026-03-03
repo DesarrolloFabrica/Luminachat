@@ -1,13 +1,21 @@
 import { useRef, useState } from "react";
 import { RouterProvider } from "react-router";
 import { router } from "./routes";
+import { LoginPage } from "./pages/LoginPage";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //Esta logeado/no esta logeado estado 
   const [showIntro, setShowIntro] = useState(true);
   const [started, setStarted] = useState(false); // usuario ya hizo click
+
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // activar video con sonido (requiere interacción usuario)
+    // 1️⃣ LOGIN
+  if (!isLoggedIn) { //Si no esta logeado, lo devuelve a la pagina principal 
+    return <LoginPage onLogin={() => setIsLoggedIn(true)} />;
+  }
+
+  // reproducir video 
   const startVideo = async () => {
     if (!videoRef.current) return;
 
@@ -33,7 +41,7 @@ function App() {
     <>
       {/* VIDEO INTRO */}
       {showIntro && (
-        <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center p-6">
+        <div className="fixed inset-0 z-[9999] bg-radial from-slate-800. from-40% to-slate-950 flex items-center justify-center p-6">
 
           {/* Contenedor centrado */}
           <div className="relative w-full max-w-6xl h-full max-h-[85vh] rounded-3xl overflow-hidden shadow-2xl border border-white/20">

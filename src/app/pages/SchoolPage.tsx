@@ -52,6 +52,7 @@ export function SchoolPage() {
     
     const videoSrc = expandedMedia === 'intro' ? school.introVideoUrl : school.avatarVideoUrl;
     const isAvatar = expandedMedia === 'avatar';
+    const backgroundSrc = "https://h6ajra25jkx2cstu.public.blob.vercel-storage.com/Whisk_8fdd12d4a302572a8f34767d04506dcceg%20%281%29.png";
 
     return (
       <motion.div 
@@ -59,7 +60,7 @@ export function SchoolPage() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+        className="fixed inset-0 z-[100] bg-white/40 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
         onClick={() => setExpandedMedia(null)}
       >
         <button 

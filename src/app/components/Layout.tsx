@@ -12,7 +12,7 @@ export function Layout() {
   const currentSchool = schools.find((s) => s.id === currentSchoolId);
 
   // Responsive Sidebar State
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Auto-close on mobile, open on desktop
   useEffect(() => {
@@ -20,7 +20,7 @@ export function Layout() {
       if (window.innerWidth < 1024) {
         setIsSidebarOpen(false);
       } else {
-        setIsSidebarOpen(true);
+        setIsSidebarOpen(false);
       }
     };
 
@@ -97,7 +97,7 @@ export function Layout() {
             <Menu size={20} />
           </button>
         <div className="flex-1 p-4 md:p-8 lg:p-10 max-w-[1920px] mx-auto w-full">
-           <Outlet />
+          <Outlet context={{ openSidebar: () => setIsSidebarOpen(true) }} />
         </div>
       </motion.main>
     </div>

@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 import { schools } from "../../lib/schools";
 import { SchoolCard } from "../components/SchoolCard";
+import { Layout } from "../components/Layout";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, MessageCircle, Info, X } from "lucide-react";
 import { useNavigate } from "react-router";
-
+import { useOutletContext } from "react-router";
 
 /**
  * ==============================================================================
@@ -12,6 +13,12 @@ import { useNavigate } from "react-router";
  * ==============================================================================
  * Edita aquí los textos, videos e imágenes de la página de inicio.
  */
+
+type LayoutContextType = {
+  openSidebar: () => void;
+};
+
+
 
 const HOME_CONTENT = {
   // Sección Principal (Hero)
@@ -48,6 +55,8 @@ export function HomePage() {
   const schoolsRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
+  const { openSidebar } = useOutletContext<LayoutContextType>();
+
 
   const scrollToSchools = () => {
     schoolsRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -89,7 +98,7 @@ export function HomePage() {
             </p>
 
             <button
-              onClick={() => { setShowPopup(false); scrollToSchools(); }}
+              onClick={() => { setShowPopup(false); openSidebar() }}
               className="w-full py-4 bg-white text-black font-bold rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg"
             >
               {HOME_CONTENT.POPUP.buttonText}
