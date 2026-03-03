@@ -112,7 +112,9 @@ export function HomePage() {
       </AnimatePresence>
 
       {/* Hero Section — Fullscreen Video */}
-      <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
+<section
+  className="
+    relative w-screen h-[100svh] overflow-hidden left-1/2 -translate-x-1/2 -mt-[40px] -mb-[40px]">
 
         {/* Video de fondo */}
         <video
@@ -121,7 +123,7 @@ export function HomePage() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
         />
 
         {/* Overlay negro */}

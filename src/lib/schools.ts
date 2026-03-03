@@ -49,11 +49,11 @@ export interface School {
 
 const VIDEOS = {
   // --- VIDEOS DE INTRODUCCIÓN (Presentación de la Facultad) ---
-  INTRO_ADMIN: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772211970/Salud_y_bienestar_zlkwkt.mp4",
-  INTRO_LAW: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772212143/Ciencias_sociales_jur%C3%ADdicas_y_gobierno_ahyije.mp4",
-  INTRO_ART: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772212088/Dise%C3%B1o_y_Comunicaci%C3%B3n_knognf.mp4",
-  INTRO_TECH: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772212041/Ingenieria_e1xjfw.mp4",
-  INTRO_BUSINESS: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772211849/Transformaci%C3%B3n_empresarial_rsfjeu.mp4",
+  INTRO_ADMIN: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772541615/Salud_y_bienestar_mqgb9r.mp4",
+  INTRO_LAW: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772541777/Ciencias_sociales_c9fv8a.mp4",
+  INTRO_ART: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772541711/Dise%C3%B1o_y_Comunicaci%C3%B3n_w7eyav.mp4",
+  INTRO_TECH: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772541665/Ingenieria_nfbp5w.mp4",
+  INTRO_BUSINESS: "https://res.cloudinary.com/dmihqer0q/video/upload/v1772541562/Transformaci%C3%B3n_empresarial_dmhm7l.mp4",
 
   // --- VIDEOS DE AVATAR (Asistente Virtual - Loop) ---
   // Cada escuela tiene su propio video de fondo para el avatar
@@ -114,10 +114,10 @@ export const schools: School[] = [
     avatarVideoUrl: VIDEOS.AVATAR_LAW,
     highlightsTitle: "Ciencias Jurídicas y Sociales",
     highlights: [
-      "DERECHO - PRESENCIAL.",
-      "ADMINISTRACIÓN PÚBLICA - VIRTUAL.",
-      "ESPECIALIZACIÓN EN PAZ Y DESARROLLO TERRITORIAL - VIRTUAL.",
-      "ESPECIALIZACIÓN EN CONTRATACIÓN ESTATAL - VIRTUAL.",
+      "Derecho - presencial.",
+      "Administración pública - virtual.",
+      "Especialización en paz y desarrollo territorial - virtual.",
+      "Especialización en contratación estatal - virtual.",
     ],
   },
   {
@@ -141,13 +141,13 @@ export const schools: School[] = [
     avatarVideoUrl: VIDEOS.AVATAR_ART,
     highlightsTitle: "¿Por qué estudiar Comunicación y Artes?",
     highlights: [
-      "DISEÑO DE MODAS - PRESENCIAL.",
-      "DISEÑO GRÁFICO - PRESENCIAL / VIRTUAL.",
-      "DIRECCIÓN Y PRODUCCIÓN DE MEDIOS AUDIOVISUALES - PRESENCIAL / VIRTUAL.",
-      "COMUNICACIÓN SOCIAL - PRESENCIAL / VIRTUAL.",
-      "PUBLICIDAD Y MERCADEO - VIRTUAL.",
-      "ESPECIALIZACIÓN EN MARKETING DIGITAL - VIRTUAL.",
-      "ESPECIALIZACIÓN EN GESTIÓN DE LA INNOVACIÓN DEL SISTEMA MODA - VIRTUAL.",
+      "Diseño de modas - presencial.",
+      "Diseño gráfico - presencial / virtual.",
+      "Dirección y producción de medios audiovisuales - presencial / virtual.",
+      "Comunicación social - presencial / virtual.",
+      "Publicidad y mercadeo - virtual.",
+      "Especialización en marketing digital - virtual.",
+      "Especialización en gestión de la innovación del sistema moda - virtual.",
     ],
   },
   {
@@ -171,13 +171,13 @@ export const schools: School[] = [
     avatarVideoUrl: VIDEOS.AVATAR_TECH,
     highlightsTitle: "Programas escuela de ingenieria",
     highlights: [
-      "INGENIERÍA INDUSTRIAL - VIRTUAL.",
-      "INGENIERÍA ELECTRÓNICA - PRESENCIAL.",
-      "INGENIERÍA DE SISTEMAS - PRESENCIAL / VIRTUAL.",
-      "ESPECIALIZACIÓN EN ANALÍTICA DE DATOS - VIRTUAL.",
-      "ESPECIALIZACIÓN EN TRANSFORMACIÓN DIGITAL - VIRTUAL.",
-      "ESPECIALIZACIÓN GESTIÓN DE TECNOLOGÍAS DE LA INFORMACIÓN - VIRTUAL.",
-      "ESPECIALIZACIÓN EN GERENCIA PARA LA TRANSICIÓN ENERGÉTICA - VIRTUAL",
+      "Ingeniería industrial - virtual.",
+      "Ingeniería electrónica - presencial.",
+      "Ingeniería de sistemas - presencial / virtual.",
+      "Especialización en analítica de datos - virtual.",
+      "Especialización en transformación digital - virtual.",
+      "Especialización gestión de tecnologías de la información - virtual.",
+      "Especialización en gerencia para la transición energética - virtual",
     ],
   },
   {
@@ -201,15 +201,15 @@ export const schools: School[] = [
     avatarVideoUrl: VIDEOS.AVATAR_BUSINESS,
     highlightsTitle: "Programas de escuela de transformación empresarial",
     highlights: [
-      "ADMINISTRACIÓN DE EMPRESAS - PRESE / VIRTU / DISTA.",
-      "ADMINISTRACIÓN DEPORTIVA - PRESENCIAL.",
-      "ADMINISTRACIÓN DE LA SEGURIDAD SOCIAL - PRESENCIAL / VIRTUAL.",
-      "ADMINISTRACIÓN DE SERVICIOS DE SALUD - PRESENCIAL.",
-      "ADMINISTRACIÓN EMPRESAS AGROINDUSTRIALES - VIRTUAL.",
-      "CONTADURÍA PÚBLICA - VIRTUAL.",
-      "ESPECIALIZACIÓN EN GERENCIA DE LA MARCA - VIRTUAL.",
-      "ESPECIALIZACIÓN EN GERENCIA EDUCATIVA - VIRTUAL.",
-      "ESPECIALIZACIÓN EN GESTIÓN DE NEGOCIOS DIGITALES - VIRTUAL.",
+      "Administración de empresas - presencial / virtual / distancia.",
+      "Administración deportiva - presencial.",
+      "Administración de la seguridad social - presencial / virtual.",
+      "Administración de servicios de salud - presencial.",
+      "Administración empresas agroindustriales - virtual.",
+      "Contaduría pública - virtual.",
+      "Especialización en gerencia de la marca - virtual.",
+      "Especialización en gerencia educativa - virtual.",
+      "Especialización en gestión de negocios digitales - virtual.",
     ],
   },
 ];

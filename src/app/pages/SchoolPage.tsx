@@ -383,7 +383,7 @@ export function SchoolPage() {
                 {!isVideoPlaying && (
                   <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent z-20">
                     <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">{school.name}</h3>
-                    <p className="text-white/80 text-sm font-medium drop-shadow-sm">Video Institucional • 2:30 min</p>
+                    <p className="text-white/80 text-sm font-medium drop-shadow-sm">Video Institucional</p>
                   </div>
                 )}
               </motion.div>
@@ -445,10 +445,6 @@ export function SchoolPage() {
 
                    {/* Avatar Status Overlay */}
                    <div className="absolute bottom-6 left-0 right-0 flex justify-center pointer-events-none z-20">
-                      <div className="px-4 py-2 bg-white/80 backdrop-blur-md rounded-full border border-gray-200 text-[10px] font-bold text-gray-800 uppercase tracking-wider flex items-center gap-2 shadow-lg">
-                       <span className={clsx("w-2 h-2 rounded-full transition-colors duration-300", isResponding ? "bg-green-500 animate-pulse shadow-sm" : "bg-gray-300")} />
-                        {isResponding ? "Hablando..." : (isTyping ? "Procesando..." : "Escuchando")}
-                      </div>
                    </div>
                </div>
 
