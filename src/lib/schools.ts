@@ -92,7 +92,7 @@ export const schools: School[] = [
       "Diplomado en Atención al Adulto Mayor y Bienestar Mental.",
       "Diplomado en Ayudas Diagnósticas para Salud Visual."
     ],
-    sitio: "https://cun.edu.co/#"
+    sitio: "https://cun.edu.co/escuela-de-salud/"
   },
   {
     id: "sociales",
@@ -121,7 +121,7 @@ export const schools: School[] = [
       "Especialización en paz y desarrollo territorial - virtual.",
       "Especialización en contratación estatal - virtual.",
     ],
-    sitio: "https://cun.edu.co/#"
+    sitio: "https://cun.edu.co/escuela-de-ciencias-sociales-juridicas-y-de-gobierno/"
   },
   {
     id: "artes",
@@ -152,7 +152,7 @@ export const schools: School[] = [
       "Especialización en marketing digital - virtual.",
       "Especialización en gestión de la innovación del sistema moda - virtual.",
     ],
-    sitio: "https://cun.edu.co/#"
+    sitio: "https://cun.edu.co/escuela-de-diseno-y-comunicacion/"
   },
   {
     id: "ingenieria",
@@ -183,7 +183,7 @@ export const schools: School[] = [
       "Especialización gestión de tecnologías de la información - virtual.",
       "Especialización en gerencia para la transición energética - virtual",
     ],
-    sitio: "https://cun.edu.co/#"
+    sitio: "https://cun.edu.co/escuela-de-ingenieria/"
   },
   {
     id: "negocios",
@@ -216,6 +216,6 @@ export const schools: School[] = [
       "Especialización en gerencia educativa - virtual.",
       "Especialización en gestión de negocios digitales - virtual.",
     ],
-    sitio: "https://cun.edu.co/#"
+    sitio: "https://cun.edu.co/escuela-de-transformacion-empresarial/"
   },
 ];
