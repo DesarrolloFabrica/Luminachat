@@ -49,11 +49,12 @@ export function LoginPage({ onLogin }: LoginPageProps) {
         {/* Overlay oscuro elegante */}
     <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-[5px]" />
       
-      <div className="w-full max-w-md bg-slate-500 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-10 text-white">
+      <div className="w-full max-w-md bg-slate-500 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl p-10 text-white">
 
-        <h2 className="text-3xl font-bold mb-6 text-center tracking-tight">
+        <h2 className="text-3xl sm:text font-bold mb-6 text-center tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-50 from-20% via-indigo-300 to-purple-300">
           Iniciar Sesión
         </h2>
+
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
@@ -77,12 +78,12 @@ export function LoginPage({ onLogin }: LoginPageProps) {
             </label>
             <input
               type="password"
-              placeholder="Digita tu cedula (10 numeros)"
+              placeholder="Digita tu cedula"
               required
               maxLength = {10}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition"
+              className="w-full px-4 py-3 mb-4 rounded-xl bg-white/10 border border-white/20 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition"
             />
           </div>
 
