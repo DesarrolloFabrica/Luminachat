@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { RouterProvider } from "react-router";
 import { router } from "./routes";
 import { LoginPage } from "./pages/LoginPage";
+import { Maximize } from "lucide-react";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); //Esta logeado/no esta logeado estado 
@@ -28,6 +29,14 @@ function App() {
     }
   };
 
+    // Fullscreen funcional
+  const handleFullscreen = async () => {
+    if (!videoRef.current) return;
+    
+    videoRef.current.requestFullscreen();
+
+  };
+
   // omitir intro
   const skipIntro = () => {
     if (videoRef.current) {
@@ -37,14 +46,26 @@ function App() {
     setShowIntro(false);
   };
 
+    // pausar intro
+  const pauseIntro = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setStarted(false);
+    }
+  };
+
   return (
     <>
       {/* VIDEO INTRO */}
       {showIntro && (
-        <div className="fixed inset-0 z-[9999] bg-radial from-slate-800. from-40% to-slate-950 flex items-center justify-center p-6">
+  <div className="fixed inset-0 flex items-center justify-center p-6 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: "url('https://h6ajra25jkx2cstu.public.blob.vercel-storage.com/FONDO1.jpeg')"}}>
+
+    <div className=" absolute inset-0 bg-slate-950/40 backdrop-blur-[4px]"> </div>
+              
 
           {/* Contenedor centrado */}
-          <div className="relative w-full max-w-6xl h-full max-h-[85vh] rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+          <div className="relative w-full max-w-6xl h-full max-h-[75vh] rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-black">
 
             <video
               ref={videoRef}
@@ -52,11 +73,21 @@ function App() {
               playsInline
               preload="auto"
               onEnded={() => setShowIntro(false)}
-              className="w-full h-full object-contain bg-black"
+              className="w-full h-full object-contain"
             />
 
-            {/* OVERLAY CLICK PARA REPRODUCIR */}
+            {/* OVERLAY CLICK PARA click reporducir y pausar */}
+            {started && (
+              <div
+                onClick={pauseIntro}
+                className=" absolute inset-0 flex flex-col items-center justify-center cursor-pointer">
+                </div>
+              
+            )
+            }
+
             {!started && (
+
               <div
                 onClick={startVideo}
                 className="
@@ -79,22 +110,26 @@ function App() {
           
             {/* BOTÓN OMITIR — solo visible cuando ya empezó */}
             {started && (
-              <button
+            <>
+                  <button
                 onClick={skipIntro}
                 className="
                   absolute bottom-6 right-6
                   px-6 py-3
-                  bg-white/20 backdrop-blur-md
-                  border border-blue-600
-                  text-white font-semibold
-                  rounded-xl
-                  hover:bg-white/30
-                  transition-all
-                  shadow-lg
-                "
+                  bg-white/20 backdrop-blur-md border border-blue-600 text-white font-semibold rounded-xl hover:bg-white/30 transition-all shadow-lg"
               >
                 Omitir intro
               </button>
+
+              {/* Botón Fullscreen */}
+                <button
+                  onClick={handleFullscreen}
+                  className="absolute bottom-6 left-6 p-3 bg-white/20 backdrop-blur-md border border-blue-600 text-white rounded-xl hover:bg-white/30 transition-all shadow-lg"
+                >
+                  <Maximize size={20} />
+                </button>
+            </>
+              
             )}
 
           </div>

@@ -35,7 +35,7 @@ const HOME_CONTENT = {
   // Pop-up de Selección de Facultad
   POPUP: {
     title: "Selecciona tu Facultad",
-    description: "Para brindarte la mejor asistencia, por favor elige una de las escuelas abajo para resolver tus dudas específicas.",
+    description: "Para brindarte la mejor asistencia, por favor elige una de las escuelas para resolver tus dudas específicas.",
     buttonText: "Ver Escuelas"
   },
 

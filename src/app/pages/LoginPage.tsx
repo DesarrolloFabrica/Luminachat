@@ -24,7 +24,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     }
 
     if (!passwordValid) { //si el password no es digitos 
-      setError("La contraseña debe tener exactamente 10 números");
+      setError("Error, asegurate de escribir bien tu cedula");
       return;
     }
 

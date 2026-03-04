@@ -137,6 +137,8 @@ export function ChatInterface({ accentColor, schoolName, onBotResponse, onBotTyp
     }
   };
 
+  const CHATBOT = "https://h6ajra25jkx2cstu.public.blob.vercel-storage.com/Sin%20t%C3%ADtulo%20%281%29.png"; // Reemplazar con la URL de tu logo
+
   // Simulate typing delay
   const simulateTyping = (callback: () => void, delay = 1500) => {
     setIsTyping(true);
@@ -249,6 +251,7 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
     }, 800);
   };
 
+
   return (
     <div className="flex flex-col h-full w-full relative z-20 bg-white/50">
       
@@ -271,7 +274,11 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
                 className="w-10 h-10 rounded-full flex items-center justify-center text-white border border-white/20 shadow-sm"
                 style={{ backgroundColor: accentColor }} 
               >
-                <Bot size={20} />
+              <img 
+                src={CHATBOT} 
+                alt="Bot" 
+                className="w-7 h-7 object-contain"
+/>
               </div>
             </div>
             <div>
@@ -361,7 +368,12 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
                   className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mb-1 shadow-md"
                   style={{ backgroundColor: accentColor, color: 'white' }}
                 >
-                  <Bot size={14} />
+              <img 
+                src={CHATBOT} 
+                alt="Bot" 
+                className="w-5 h-5 object-contain"
+                />
+
                 </div>
               )}
               
@@ -476,7 +488,11 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
               className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mb-1"
               style={{ backgroundColor: accentColor, color: 'white' }}
             >
-              <Bot size={14} />
+              <img 
+                src={CHATBOT} 
+                alt="Bot" 
+                className="w-5 h-5 object-contain"
+                />
             </div>
             <div className="bg-white p-4 rounded-2xl rounded-tl-sm flex gap-1 items-center h-12 border border-gray-100 shadow-sm">
               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
