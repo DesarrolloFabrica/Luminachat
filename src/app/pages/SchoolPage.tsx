@@ -10,7 +10,6 @@ import { ReactiveAvatar } from "../components/ReactiveAvatar";
 export function SchoolPage() {
   const { schoolId } = useParams();
   const school = schools.find((s) => s.id === schoolId);
-  
   const [showChat, setShowChat] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [isResponding, setIsResponding] = useState(false);
@@ -183,10 +182,14 @@ export function SchoolPage() {
                      <span>Hablar con Asistente</span>
                    </button>
                    
-                   <button className="px-6 py-4 rounded-2xl border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-3 shadow-sm hover:shadow-md">
+                   <a
+                    href={school.sitio}
+                    target="_blank"
+                    className="px-6 py-4 rounded-2xl border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-3 shadow-sm hover:shadow-md">
+
                      <ExternalLink size={20} />
                      <span>Sitio Oficial</span>
-                   </button>
+                   </a>
                 </div>
 
                 {/* Mobile Video Section — inline playback + fullscreen horizontal */}

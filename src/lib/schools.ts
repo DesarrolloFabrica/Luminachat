@@ -39,6 +39,7 @@ export interface School {
   welcomeMessage: string;
   highlightsTitle: string; // Título de la lista de puntos destacados
   highlights: string[]; // Lista de puntos destacados visibles bajo las estadísticas
+  sitio: string;
 }
 
 // URLS DE EJEMPLO (Pexels - Libres de derechos)
@@ -91,6 +92,7 @@ export const schools: School[] = [
       "Diplomado en Atención al Adulto Mayor y Bienestar Mental.",
       "Diplomado en Ayudas Diagnósticas para Salud Visual."
     ],
+    sitio: "https://cun.edu.co/#"
   },
   {
     id: "sociales",
@@ -119,6 +121,7 @@ export const schools: School[] = [
       "Especialización en paz y desarrollo territorial - virtual.",
       "Especialización en contratación estatal - virtual.",
     ],
+    sitio: "https://cun.edu.co/#"
   },
   {
     id: "artes",
@@ -149,6 +152,7 @@ export const schools: School[] = [
       "Especialización en marketing digital - virtual.",
       "Especialización en gestión de la innovación del sistema moda - virtual.",
     ],
+    sitio: "https://cun.edu.co/#"
   },
   {
     id: "ingenieria",
@@ -179,6 +183,7 @@ export const schools: School[] = [
       "Especialización gestión de tecnologías de la información - virtual.",
       "Especialización en gerencia para la transición energética - virtual",
     ],
+    sitio: "https://cun.edu.co/#"
   },
   {
     id: "negocios",
@@ -211,5 +216,6 @@ export const schools: School[] = [
       "Especialización en gerencia educativa - virtual.",
       "Especialización en gestión de negocios digitales - virtual.",
     ],
+    sitio: "https://cun.edu.co/#"
   },
 ];

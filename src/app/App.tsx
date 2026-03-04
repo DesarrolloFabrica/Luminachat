@@ -62,8 +62,6 @@ function App() {
     style={{ backgroundImage: "url('https://h6ajra25jkx2cstu.public.blob.vercel-storage.com/FONDO1.jpeg')"}}>
 
     <div className=" absolute inset-0 bg-slate-950/40 backdrop-blur-[4px]"> </div>
-              
-
           {/* Contenedor centrado */}
           <div className="relative w-full max-w-6xl h-full max-h-[75vh] rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-black">
 
