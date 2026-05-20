@@ -28,3 +28,41 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* Gradiente animado — texto LUMINA */
+@keyframes lumina-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-lumina-gradient {
+  animation: lumina-gradient-shift 8s ease-in-out infinite;
+}
+
+/* Marquee horizontal */
+@keyframes lumina-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-lumina-marquee {
+  animation: lumina-marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-lumina-gradient,
+  .animate-lumina-marquee {
+    animation: none;
+  }
+}

@@ -2,8 +2,13 @@ import { createBrowserRouter } from "react-router";
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
 import { SchoolPage } from "./pages/SchoolPage";
+import { LuminaIntroRoute } from "./pages/LuminaIntroPage";
 
 export const router = createBrowserRouter([
+  {
+    path: "/intro",
+    Component: LuminaIntroRoute,
+  },
   {
     path: "/",
     Component: Layout,
