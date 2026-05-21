@@ -60,6 +60,30 @@ body {
   animation: lumina-marquee 45s linear infinite;
 }
 
+.lumina-chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 211, 238, 0.35) transparent;
+}
+
+.lumina-chat-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.lumina-chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lumina-chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.22);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.15);
+}
+
+.lumina-chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.25);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-lumina-gradient,
   .animate-lumina-marquee {

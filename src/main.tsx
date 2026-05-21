@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import '@lottiefiles/dotlottie-wc'
 import App from './app/App'
 import './styles/fonts.css'
 import './index.css'

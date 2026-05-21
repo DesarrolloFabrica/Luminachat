@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import type { School } from "../../../lib/schools";
 import { SpatialCard } from "./SpatialCard";
 import { MainHeroContent } from "./MainHeroContent";
+import { LuminaCoreAnimation } from "../visual/LuminaCoreAnimation";
 import { cardFloat, heroCardEntrance } from "../../lib/motionVariants";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import type { ParallaxOffset } from "../../hooks/useMouseParallax";
@@ -22,24 +23,28 @@ interface SchoolOrbitCardsProps {
   isTransitioning?: boolean;
 }
 
+/** Tarjeta + núcleo Lottie se desplazan juntos */
 const slideVariants = {
   enter: (dir: number) => ({
-    x: dir > 0 ? 120 : -120,
+    x: dir > 0 ? 140 : -140,
     opacity: 0,
-    scale: 0.88,
-    rotateY: dir > 0 ? -12 : 12,
+    scale: 0.9,
+    rotateY: dir > 0 ? -10 : 10,
+    filter: "blur(6px)",
   }),
   center: {
     x: 0,
     opacity: 1,
     scale: 1,
     rotateY: 0,
+    filter: "blur(0px)",
   },
   exit: (dir: number) => ({
-    x: dir > 0 ? -120 : 120,
+    x: dir > 0 ? -140 : 140,
     opacity: 0,
-    scale: 0.88,
-    rotateY: dir > 0 ? 12 : -12,
+    scale: 0.9,
+    rotateY: dir > 0 ? 10 : -10,
+    filter: "blur(6px)",
   }),
 };
 
@@ -117,20 +122,29 @@ export function SchoolOrbitCards({
 
   const centerPx = reducedMotion ? 0 : parallax.x * 8;
   const centerPy = reducedMotion ? 0 : parallax.y * 6;
+  const activeSlide = slides[activeIndex];
+  const centerAccent =
+    activeSlide.kind === "hero" ? "#6366f1" : activeSlide.school.accentColor;
+
+  const sideCardMotion = {
+    opacity: 0.78,
+    scale: 0.9,
+    filter: "blur(0px)",
+  };
 
   return (
     <div
-      className="relative mx-auto h-[min(58vh,540px)] w-full max-w-6xl flex items-center justify-center"
+      className="relative mx-auto h-[min(82vh,780px)] w-full max-w-6xl flex items-center justify-center"
       style={{ perspective: "1600px" }}
     >
-      <div className="absolute left-[2%] md:left-[4%] top-1/2 w-[min(24vw,240px)] -translate-y-1/2 z-10 hidden md:block">
+      <div className="absolute left-[2%] md:left-[4%] top-[38%] w-[min(24vw,240px)] -translate-y-1/2 z-10 hidden md:block">
         <AnimatePresence mode="popLayout" custom={direction}>
           <motion.div
             key={`left-${leftIndex}`}
             custom={direction}
             variants={slideVariants}
             initial="enter"
-            animate={{ x: -8, opacity: 0.72, scale: 0.9, rotateY: 14 }}
+            animate={{ x: -8, rotateY: 14, ...sideCardMotion }}
             exit="exit"
             transition={{ type: "spring", stiffness: 280, damping: 28 }}
             style={{ transformStyle: "preserve-3d" }}
@@ -151,14 +165,14 @@ export function SchoolOrbitCards({
         </AnimatePresence>
       </div>
 
-      <div className="absolute right-[2%] md:right-[4%] top-1/2 w-[min(24vw,240px)] -translate-y-1/2 z-10 hidden md:block">
+      <div className="absolute right-[2%] md:right-[4%] top-[38%] w-[min(24vw,240px)] -translate-y-1/2 z-10 hidden md:block">
         <AnimatePresence mode="popLayout" custom={direction}>
           <motion.div
             key={`right-${rightIndex}`}
             custom={direction}
             variants={slideVariants}
             initial="enter"
-            animate={{ x: 8, opacity: 0.72, scale: 0.9, rotateY: -14 }}
+            animate={{ x: 8, rotateY: -14, ...sideCardMotion }}
             exit="exit"
             transition={{ type: "spring", stiffness: 280, damping: 28 }}
             style={{ transformStyle: "preserve-3d" }}
@@ -179,12 +193,12 @@ export function SchoolOrbitCards({
         </AnimatePresence>
       </div>
 
-      <div className="relative z-20 w-[min(92vw,560px)] min-h-[320px] flex items-center justify-center">
+      <div className="relative z-20 w-[min(92vw,560px)] flex flex-col items-center justify-start pt-4 md:pt-0">
         <motion.div
           style={{ x: centerPx, y: centerPy }}
           animate={{ scale: isTransitioning ? 0.98 : 1 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full"
+          className="w-full flex flex-col items-center"
         >
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
@@ -195,14 +209,23 @@ export function SchoolOrbitCards({
               animate="center"
               exit="exit"
               transition={{ type: "spring", stiffness: 260, damping: 26 }}
-              className="w-full"
+              className="w-full flex flex-col items-center gap-10 md:gap-16 lg:gap-20"
               style={{ transformStyle: "preserve-3d" }}
             >
-              <CenterSlide
-                slide={slides[activeIndex]}
-                onStartClick={onStartClick}
-                onViewSchoolsClick={onViewSchoolsClick}
-              />
+              <div className="w-full shrink-0 relative z-20">
+                <CenterSlide
+                  slide={activeSlide}
+                  onStartClick={onStartClick}
+                  onViewSchoolsClick={onViewSchoolsClick}
+                />
+              </div>
+              <div className="w-full flex justify-center pointer-events-none relative z-10 pt-2 md:pt-4">
+                <LuminaCoreAnimation
+                  accentColor={centerAccent}
+                  parallax={parallax}
+                  compact
+                />
+              </div>
             </motion.div>
           </AnimatePresence>
         </motion.div>
@@ -223,7 +246,12 @@ function CenterSlide({
   if (slide.kind === "hero") {
     return (
       <motion.div variants={heroCardEntrance} initial="hidden" animate="visible">
-        <SpatialCard depth="center" accentColor="#6366f1" className="p-8 md:p-10" skipEntrance>
+        <SpatialCard
+          depth="center"
+          accentColor="#6366f1"
+          className="p-6 md:p-8"
+          skipEntrance
+        >
           <MainHeroContent />
         </SpatialCard>
       </motion.div>

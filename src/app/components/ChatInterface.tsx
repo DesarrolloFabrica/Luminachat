@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, User, Bot, Loader2, ArrowLeft, Settings, Save, Home, ChevronLeft } from "lucide-react";
+import { Send, User, Loader2, ArrowLeft, Settings, Save, Home, ChevronLeft } from "lucide-react";
+import { LuminaCoreIcon } from "./visual/LuminaCoreIcon";
 import { motion, AnimatePresence } from "motion/react";
 import { clsx } from "clsx";
 import { getStoredApiKey, setStoredApiKey } from "../../lib/api-config";
@@ -137,8 +138,6 @@ export function ChatInterface({ accentColor, schoolName, onBotResponse, onBotTyp
     }
   };
 
-  const CHATBOT = "https://h6ajra25jkx2cstu.public.blob.vercel-storage.com/Sin%20t%C3%ADtulo%20%281%29.png"; // Reemplazar con la URL de tu logo
-
   // Simulate typing delay
   const simulateTyping = (callback: () => void, delay = 1500) => {
     setIsTyping(true);
@@ -269,20 +268,9 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
           )}
           
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white border border-white/20 shadow-sm"
-                style={{ backgroundColor: accentColor }} 
-              >
-              <img 
-                src={CHATBOT} 
-                alt="Bot" 
-                className="w-7 h-7 object-contain"
-/>
-              </div>
-            </div>
+            <LuminaCoreIcon accentColor={accentColor} size="md" active={isTyping} />
             <div>
-              <h3 className="font-bold text-gray-900 text-sm tracking-wide">Asistente Virtual</h3>
+              <h3 className="font-bold text-gray-900 text-sm tracking-wide">LUMINA</h3>
               <p className="text-[10px] text-gray-500 uppercase font-semibold tracking-wider flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                 En línea
@@ -364,17 +352,7 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
               )}
             >
               {msg.role === "bot" && (
-                <div 
-                  className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mb-1 shadow-md"
-                  style={{ backgroundColor: accentColor, color: 'white' }}
-                >
-              <img 
-                src={CHATBOT} 
-                alt="Bot" 
-                className="w-5 h-5 object-contain"
-                />
-
-                </div>
+                <LuminaCoreIcon accentColor={accentColor} size="sm" className="mb-1" />
               )}
               
               {msg.content && (
@@ -484,16 +462,7 @@ const handleQuestionSend = async (question: string, subtopic: string, topic: str
             animate={{ opacity: 1, y: 0 }}
             className="flex items-end gap-3"
           >
-            <div 
-              className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mb-1"
-              style={{ backgroundColor: accentColor, color: 'white' }}
-            >
-              <img 
-                src={CHATBOT} 
-                alt="Bot" 
-                className="w-5 h-5 object-contain"
-                />
-            </div>
+            <LuminaCoreIcon accentColor={accentColor} size="sm" active className="mb-1" />
             <div className="bg-white p-4 rounded-2xl rounded-tl-sm flex gap-1 items-center h-12 border border-gray-100 shadow-sm">
               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
               <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />

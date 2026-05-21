@@ -178,7 +178,7 @@ export function SpatialCampusExperience({
       <main className="relative z-10 flex flex-col min-h-[100dvh] pt-24 pb-32 px-4 md:px-8">
         <section
           id="lumina-carousel"
-          className="hidden sm:block flex-1 flex items-center justify-center py-8"
+          className="hidden sm:block flex-1 flex flex-col items-center justify-center py-4 md:py-6"
         >
           <SchoolOrbitCards
             slides={slides}
@@ -194,7 +194,7 @@ export function SpatialCampusExperience({
 
         <section
           id="lumina-carousel-mobile"
-          className="sm:hidden flex flex-col gap-4 py-4 min-h-[360px]"
+          className="sm:hidden flex flex-col gap-4 py-4 min-h-[min(85vh,680px)]"
         >
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Home, PanelLeftClose, PanelLeft, X } from "lucide-react";
 import { clsx } from "clsx";
 import { schools } from "../../../lib/schools";
+import { getSchoolThemeByPath } from "../../data/schoolThemes";
 import { SidebarItem } from "./SidebarItem";
 import { SidebarSection } from "./SidebarSection";
 
@@ -22,12 +23,10 @@ export function SpatialSidebar({
   onCollapsedChange,
 }: SpatialSidebarProps) {
   const location = useLocation();
-  const themeAccent = useMemo(() => {
-    const match = schools.find((s) =>
-      location.pathname.startsWith(`/school/${s.id}`),
-    );
-    return match?.accentColor ?? "#3b82f6";
-  }, [location.pathname]);
+  const themeAccent = useMemo(
+    () => getSchoolThemeByPath(location.pathname).accentColor,
+    [location.pathname],
+  );
 
   const [collapsed, setCollapsed] = useState(false);
 

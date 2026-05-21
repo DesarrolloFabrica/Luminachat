@@ -2,8 +2,8 @@ import { Outlet, useLocation, useNavigate } from "react-router";
 import { SpatialSidebar } from "./layout/SpatialSidebar";
 import { clsx } from "clsx";
 import { motion, AnimatePresence } from "motion/react";
-import { schools } from "../../lib/schools";
-import { useState, useEffect } from "react";
+import { getSchoolThemeByPath } from "../data/schoolThemes";
+import { useState, useEffect, useMemo } from "react";
 import { Menu, X } from "lucide-react";
 
 const SIDEBAR_WIDTH_EXPANDED = 304;
@@ -13,8 +13,10 @@ export function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
-  const currentSchoolId = location.pathname.split("/")[2];
-  const currentSchool = schools.find((s) => s.id === currentSchoolId);
+  const schoolTheme = useMemo(
+    () => getSchoolThemeByPath(location.pathname),
+    [location.pathname],
+  );
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -62,22 +64,30 @@ export function Layout() {
     >
       {!isHome && (
         <div className="fixed inset-0 pointer-events-none z-0">
-          <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-100/50 rounded-full blur-[120px]" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-indigo-100/50 rounded-full blur-[120px]" />
           <AnimatePresence mode="wait">
-            {currentSchool && (
-              <motion.div
-                key={currentSchool.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-                className="absolute inset-0 z-0 opacity-20 mix-blend-multiply"
+            <motion.div
+              key={schoolTheme.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0"
+            >
+              <div
+                className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px]"
+                style={{ backgroundColor: `${schoolTheme.backgroundGlow}28` }}
+              />
+              <div
+                className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px]"
+                style={{ backgroundColor: `${schoolTheme.secondaryGlow}22` }}
+              />
+              <div
+                className="absolute inset-0 opacity-25 mix-blend-multiply"
                 style={{
-                  background: `radial-gradient(circle at 70% 50%, ${currentSchool.accentColor}44 0%, transparent 60%)`,
+                  background: `radial-gradient(circle at 70% 50%, ${schoolTheme.accentColor}55 0%, transparent 60%)`,
                 }}
               />
-            )}
+            </motion.div>
           </AnimatePresence>
         </div>
       )}
